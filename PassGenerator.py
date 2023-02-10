@@ -3,9 +3,7 @@ def Password_Generator():
     import random
     import string
     
-    ch = string.printable
-    symb = "!#$%@&*_-+./?"
-    
+    print("Lets begin generating your password. ")
     symb_req = input("Do you need any symbols? ").lower()
     if symb_req == "yes":
         symb_amt = int(input("How many symbols do you require? "))
@@ -23,7 +21,14 @@ def Password_Generator():
         num_amt = 0
         print("No numbers will be included in your password.")
     
-    unrand = random.sample(symb, symb_amt)+random.sample(ch[10:36], alpha)+random.sample(ch[36:62], Up_Cs)+random.sample(ch[0:9], num_amt)
+    unrand = random.sample(string.punctuation, symb_amt)+random.sample(string.ascii_lowercase, alpha)+random.sample(string.ascii_uppercase, Up_Cs)+random.sample(string.ascii_digits, num_amt)
     random.shuffle(unrand)
     Password = "".join(unrand)
     print(Password)
+
+gen = input("Would you like to begin generating a password? ").lower()
+    if gen == "yes":
+        Password_Generator()
+    else:
+        print("No problem! Come back any time! ")
+        
